@@ -1,9 +1,14 @@
-import React from 'react'
+"use client";
+
+import ProductListingPage from "@/components/ProductListingPage";
+import React from "react";
 
 const HomePage = () => {
   return (
-    <div>HomePage</div>
-  )
-}
+    <div>
+      <ProductListingPage />
+    </div>
+  );
+};
 
-export default HomePage
+export default HomePage;
