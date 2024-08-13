@@ -19,7 +19,7 @@ const SignIn: React.FC = () => {
   if (userId) {
     router.replace("/");
   }
-  // Email and password validation using regex
+
   const validateEmail = (email: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);

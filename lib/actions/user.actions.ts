@@ -41,8 +41,8 @@ export async function checkUserExists({
     await connectToDatabase();
 
     const user = await User.findOne({ email });
-    console.log("User: ", user);
     if (!user) throw new Error("User not found!");
+    
     if (user.password !== password) throw new Error("Password incorrect!");
     return JSON.parse(JSON.stringify(user));
   } catch (error) {
@@ -56,8 +56,6 @@ export async function getUserEmail(userId: string) {
 
     const user = await User.findById(userId);
     if (!user) throw new Error("User not found!");
-
-    console.log("User in get email: ", user);
 
     return JSON.parse(JSON.stringify(user.email));
   } catch (error) {

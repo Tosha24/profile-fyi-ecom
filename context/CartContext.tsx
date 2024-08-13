@@ -30,7 +30,7 @@ const defaultCartContext: CartContextType = {
   addToCart: () => {},
   updateCart: () => {},
   removeFromCart: () => {},
-  clearCart: () => {},
+  clearCart: () => {},  
 };
 
 // Create the context
@@ -40,12 +40,12 @@ export const CartContext = createContext<CartContextType>(defaultCartContext);
 // CartProvider component to wrap around components needing cart state
 export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   const [cart, setCart] = useState<CartItem[]>(() =>
-    JSON.parse(localStorage.getItem("cart") || "[]")
+    JSON.parse(typeof window !== "undefined" && localStorage.getItem("cart") || "[]")
   );
 
   useEffect(() => {
     try {
-      localStorage.setItem("cart", JSON.stringify(cart));
+      typeof window !== "undefined" && localStorage.setItem("cart", JSON.stringify(cart));
       console.log("Cart saved to localStorage:", cart);
     } catch (error) {
       console.error("Failed to save cart to localStorage:", error);
